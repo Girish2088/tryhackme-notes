@@ -6,6 +6,7 @@ This repository documents my cybersecurity learning using TryHackMe.
 
 ### 🐧 Linux
 - [Linux Fundamentals Part 1](Linux/linux-fundamentals-part1.md)
+- [Linux Fundamentals Part 2](Linux/linux-fundamentals-part2.md)
 
 ## 🎯 Goal
 - Build strong cybersecurity fundamentals
