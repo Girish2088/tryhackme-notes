@@ -47,11 +47,17 @@ kill - to kill all process
 TO KILL THE PROCESS EFFICIENTLY-
 	Below are some of the signals that we can send to a process when it is killed:
 
+
+
 SIGTERM - Kill the process, but allow it to do some cleanup tasks beforehand
 SIGKILL - Kill the process - doesn't do any cleanup after the fact
 SIGSTOP - Stop/suspend a process
 
+
+
 systemct1-allows us to interact with the systemd process/daemon.
+
+
 	syntax:- systemctl [option] [service]
 	
 	-We can do five options with systemctl:
