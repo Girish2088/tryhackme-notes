@@ -38,13 +38,21 @@ convert remort server in to server:-
 
 
 **Process**
+
 ps- to see process goin in pc.
+
 ps id - to see specific process
+
 ps aux - to see process run by different users.
+
 top- to see detailed processes view.
+
 kill - to kill all process
+
 	to kill specific PID(process id)-syntax(kill ----)
+	
 TO KILL THE PROCESS EFFICIENTLY-
+
 	Below are some of the signals that we can send to a process when it is killed:
 
 
