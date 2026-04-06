@@ -5,7 +5,7 @@ This repository documents my cybersecurity learning using TryHackMe.
 ## 📚 Completed Rooms
 
 ###  Networking
-- [Networking Fundamentals](networking-fundamentals.md)
+- [Networking Fundamentals](Networking/networking-fundamentals.md)
 
 ###  Linux
 - [Linux Fundamentals Part 1](Linux/linux-fundamentals-part1.md)
