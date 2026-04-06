@@ -10,9 +10,9 @@ This repository documents my cybersecurity learning using TryHackMe.
 - [Linux Fundamentals Part 3](Linux/linux-fundamentals-part3.md)
 
 ### Windows
--[Windows command line](Windows/windows-command-line.md)
+- [Windows command line](Windows/windows-command-line.md)
 
--[Windows Powershell](Windows/windows-powershell.md)
+- [Windows Powershell](Windows/windows-powershell.md)
   
 
 ## 🎯 Goal
