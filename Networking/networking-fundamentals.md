@@ -1,111 +1,108 @@
 OSI Model & Networking Notes
-OSI Model Overview
+OSI Model
 
-The OSI model provides a framework dictating how all networked devices send, receive, and interpret data.
+The OSI model provides a framework dictating how networked devices send, receive, and interpret data.
 
-OSI Layers
-Layer	Name	Description
-1	Physical	hardware components (e.g., Ethernet cable)
-2	Data Link	physical addressing using MAC
-3	Network	routing using IP
-4	Transport	data transfer (TCP/UDP)
-5	Session	session management
-6	Presentation	encryption and formatting
-7	Application	user interaction
-Layer Details
-Physical
+OSI Layers (7 Layers)
+1. Physical
 physical components of networking
 example: Ethernet cable
-Data Link
-physical addressing of transmission
-packet contains IP info and is mapped to MAC address
+2. Data Link
+handles physical addressing
+packet contains IP info → mapped to MAC address
 NIC provides a unique MAC address
-Network
+3. Network
 determines optimal routing path
-protocols:
+uses protocols:
 OSPF (Open Shortest Path First)
 RIP (Routing Information Protocol)
-routers are Layer 3 devices
-Transport
-Protocol	Behavior
-TCP	reliable, ordered
-UDP	fast, no guarantee
-Example: Cat Image (4 chunks)
-Protocol	Result
-TCP	image only if all chunks received
-UDP	displays whatever is received
-Session
-connection creates a session
-Presentation
+routers operate at Layer 3
+4. Transport
+TCP (Transmission Control Protocol)
+data split into small chunks
+requires all chunks to be received
+ensures order and accuracy
+used in:
+file sharing
+web browsing
+email
+UDP (User Datagram Protocol)
+data split into chunks
+sends without checking
+no guarantee of delivery or order
+Example (Cat Image)
+split into 4 chunks
+
+TCP:
+
+checks all chunks and order
+missing chunk → no image
+
+UDP:
+
+displays whatever is received
+ignores missing or unordered chunks
+5. Session
+session is created when connection is established
+6. Presentation
 handles encryption (e.g., HTTPS)
-Application
-user interacts with data via GUI
-defines rules for communication
+7. Application
+user interacts with data
+provides GUI and communication rules
 Packets vs Frames
-Term	Meaning
-Packet	contains IP address
-Frame	encapsulated structure
 
-Analogy:
+Think of sending a letter:
 
-Frame = envelope
-Packet = letter
+Frame → envelope
+Packet → actual message
+
+Rule:
+
+data with IP address → Packet
+without IP address → Frame
 TCP
-ensures correct and ordered delivery
-slower but reliable
-TCP/IP Model
-Layer	Function
-Application	HTTP, FTP
-Transport	TCP, ports
-Internet	IP addressing
-Network Interface	physical transfer
-Encapsulation
-sender adds headers
-receiver removes headers
-TCP Reliability
+reliable and ordered delivery
+slower than UDP
+Why TCP is Reliable
 sequence numbers
 acknowledgements (ACK)
 checksum
 retransmission
 TCP Headers
-Field	Purpose
-Source Port	sender
-Destination Port	receiver
-Source IP	sender address
-Destination IP	receiver address
-Sequence Number	order
-Acknowledgement Number	confirmation
-Checksum	integrity
-Flags	SYN, ACK, FIN, RST
-Data	payload
+Source Port
+Destination Port
+Source IP
+Destination IP
+Sequence Number
+Acknowledgement Number
+Checksum
+Flags (SYN, ACK, FIN, RST)
+Data
 Three-Way Handshake
-Step	Action
-1	SYN
-2	SYN-ACK
-3	ACK
+SYN → SYN-ACK → ACK
 
 Connection established.
 
 Data Transfer
 data sent with sequence numbers
-ACK confirms receipt
+receiver sends ACK
 missing data is resent
 Connection Closing
-Step	Action
-1	FIN
-2	ACK
-3	FIN
-4	ACK
-
-Flow:
-SYN → SYN-ACK → ACK → DATA → FIN → ACK
-
+FIN → ACK → FIN → ACK
+TCP/IP Model (4 Layers)
+Application → HTTP, FTP
+Transport → TCP
+Internet → IP
+Network Interface → physical transfer
+Encapsulation
+sender adds headers while moving down layers
+receiver removes headers
 UDP
-Overview
-Feature	Description
-Type	connectionless
-Reliability	none
-Speed	very fast
+Key Characteristics
+connectionless
+no handshake
+no guarantees
+very fast
 Behavior
 stateless
 no ACK
@@ -120,48 +117,44 @@ fast
 low overhead
 works on unstable networks
 Disadvantages
-no guarantee of delivery
+no delivery guarantee
 no order
-no recovery
+no error recovery
 UDP Headers
-Field	Purpose
-Source IP	sender
-Destination IP	receiver
-Source Port	random
-Destination Port	fixed
-TTL	lifetime
-Data	payload
+Source IP
+Destination IP
+Source Port
+Destination Port
+TTL
+Data
 UDP Flow
-sender sends data
-receiver may or may not receive
-no acknowledgement
+Send → Maybe Received → Done
 TCP vs UDP
 TCP: Connect → Check → Deliver → Confirm
 UDP: Send → Hope → Done
 Ports
-Range	Description
-0–1024	common ports
-0–65535	total ports
+range: 0 – 65535
+common ports: 0 – 1024
 
-Reference: https://www.vmaxx.net/techinfo/ports.htm
+Reference:
+https://www.vmaxx.net/techinfo/ports.htm
 
 Port Forwarding
 connects internal services to the internet
 required for web servers
-configured on a router
+configured on router
 Firewall
 
-A firewall controls network traffic using packet inspection.
+Controls incoming and outgoing traffic.
 
-Type	Behavior
-Stateful	analyzes full connection
-Stateless	analyzes individual packets
+Types
+Stateful → analyzes full connection
+Stateless → analyzes individual packets
 VPN (Virtual Private Network)
 creates a secure tunnel over the internet
-connects remote networks
+connects different networks
 provides privacy
 VPN Technologies
-Technology	Function
-PPP	authentication and encryption
-PPTP	allows PPP to leave network
-IPSec	encrypts using IP framework
+PPP → authentication + encryption (cannot leave network alone)
+PPTP → allows PPP to travel outside network
+IPSec → encrypts using IP framework
