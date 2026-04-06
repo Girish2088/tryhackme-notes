@@ -1,160 +1,307 @@
-OSI Model & Networking Notes
-OSI Model
 
-The OSI model provides a framework dictating how networked devices send, receive, and interpret data.
 
-OSI Layers (7 Layers)
-1. Physical
-physical components of networking
-example: Ethernet cable
-2. Data Link
-handles physical addressing
-packet contains IP info → mapped to MAC address
-NIC provides a unique MAC address
-3. Network
-determines optimal routing path
-uses protocols:
-OSPF (Open Shortest Path First)
-RIP (Routing Information Protocol)
-routers operate at Layer 3
-4. Transport
-TCP (Transmission Control Protocol)
-data split into small chunks
-requires all chunks to be received
-ensures order and accuracy
-used in:
-file sharing
-web browsing
-email
-UDP (User Datagram Protocol)
-data split into chunks
-sends without checking
-no guarantee of delivery or order
-Example (Cat Image)
-split into 4 chunks
+# 🌐 OSI Model & Networking Notes
 
-TCP:
+---
 
-checks all chunks and order
-missing chunk → no image
+## 📚 OSI Model Overview
 
-UDP:
+The OSI model provides a framework dictating how all networked devices send, receive, and interpret data.
 
-displays whatever is received
-ignores missing or unordered chunks
-5. Session
-session is created when connection is established
-6. Presentation
-handles encryption (e.g., HTTPS)
-7. Application
-user interacts with data
-provides GUI and communication rules
-Packets vs Frames
+---
 
-Think of sending a letter:
+## 🧱 OSI Layers (7 Layers)
 
-Frame → envelope
-Packet → actual message
+| Layer No. | Layer Name   | Description                                                                     |
+| --------- | ------------ | ------------------------------------------------------------------------------- |
+| 1         | Physical     | the physical components of the hardware used in networking (ex: Ethernet cable) |
+| 2         | Data Link    | physical addressing using MAC address via NIC                                   |
+| 3         | Network      | routing and logical addressing using IP                                         |
+| 4         | Transport    | data transfer using TCP and UDP                                                 |
+| 5         | Session      | establishes and manages sessions                                                |
+| 6         | Presentation | encryption and data formatting                                                  |
+| 7         | Application  | user interaction via GUI and protocols                                          |
 
-Rule:
+---
 
-data with IP address → Packet
-without IP address → Frame
-TCP
-reliable and ordered delivery
-slower than UDP
-Why TCP is Reliable
-sequence numbers
-acknowledgements (ACK)
-checksum
-retransmission
-TCP Headers
-Source Port
-Destination Port
-Source IP
-Destination IP
-Sequence Number
-Acknowledgement Number
-Checksum
-Flags (SYN, ACK, FIN, RST)
-Data
-Three-Way Handshake
-SYN → SYN-ACK → ACK
+## 🔍 Layer Breakdown
 
-Connection established.
+### 1. Physical
 
-Data Transfer
-data sent with sequence numbers
-receiver sends ACK
-missing data is resent
-Connection Closing
-FIN → ACK → FIN → ACK
-TCP/IP Model (4 Layers)
-Application → HTTP, FTP
-Transport → TCP
-Internet → IP
-Network Interface → physical transfer
-Encapsulation
-sender adds headers while moving down layers
-receiver removes headers
-UDP
-Key Characteristics
-connectionless
-no handshake
-no guarantees
-very fast
-Behavior
-stateless
-no ACK
-no retransmission
-Use Cases
-video streaming
-voice calls
-online gaming
-live broadcast
-Advantages
-fast
-low overhead
-works on unstable networks
-Disadvantages
-no delivery guarantee
-no order
-no error recovery
-UDP Headers
-Source IP
-Destination IP
-Source Port
-Destination Port
-TTL
-Data
-UDP Flow
-Send → Maybe Received → Done
-TCP vs UDP
-TCP: Connect → Check → Deliver → Confirm
-UDP: Send → Hope → Done
-Ports
-range: 0 – 65535
-common ports: 0 – 1024
+* the physical components of the hardware used in networking
+* ex: Ethernet cable
 
-Reference:
-https://www.vmaxx.net/techinfo/ports.htm
+---
 
-Port Forwarding
-connects internal services to the internet
-required for web servers
-configured on router
-Firewall
+### 2. Data Link
 
-Controls incoming and outgoing traffic.
+* the physical addressing of the transmission
+* it sends packet containing info of host computer(ip address) and add that in mac address of receiving computer
+* Network Interface Card (NIC) provides unique MAC address
 
-Types
-Stateful → analyzes full connection
-Stateless → analyzes individual packets
-VPN (Virtual Private Network)
-creates a secure tunnel over the internet
-connects different networks
-provides privacy
-VPN Technologies
-PPP → authentication + encryption (cannot leave network alone)
-PPTP → allows PPP to travel outside network
-IPSec → encrypts using IP framework
+---
+
+### 3. Network
+
+* routing determines the most optimal path
+* uses protocols:
+
+  * OSPF (Open Shortest Path First)
+  * RIP (Routing Information Protocol)
+* routers = Layer 3 devices
+
+---
+
+### 4. Transport
+
+| Protocol | Behavior                             |
+| -------- | ------------------------------------ |
+| TCP      | reliable, ordered, complete delivery |
+| UDP      | fast, no guarantee, unordered        |
+
+#### 📦 Example: Cat Image (4 chunks)
+
+| Protocol | Result                                  |
+| -------- | --------------------------------------- |
+| TCP      | shows image only if all chunks received |
+| UDP      | shows whatever chunks are received      |
+
+---
+
+### 5. Session
+
+* When a connection is established, a session is created
+
+---
+
+### 6. Presentation
+
+* encryption (example: HTTPS)
+
+---
+
+### 7. Application
+
+* user interaction via GUI
+* defines how data is accessed
+
+---
+
+# 📦 Packets vs Frames
+
+| Term   | Meaning                           |
+| ------ | --------------------------------- |
+| Packet | contains IP address               |
+| Frame  | encapsulated structure without IP |
+
+📌 Analogy:
+
+* Envelope = Frame
+* Letter = Packet
+
+---
+
+# 🔗 TCP (Transmission Control Protocol)
+
+| Feature     | Description                          |
+| ----------- | ------------------------------------ |
+| Reliability | Ensures correct and ordered delivery |
+| Speed       | Slower than UDP                      |
+| Usage       | file sharing, browsing, email        |
+
+---
+
+## ⚙️ TCP/IP Model (4 Layers)
+
+| Layer             | Function          |
+| ----------------- | ----------------- |
+| Application       | HTTP, FTP         |
+| Transport         | TCP, ports        |
+| Internet          | IP addressing     |
+| Network Interface | physical transfer |
+
+---
+
+## 📦 Encapsulation
+
+* Data moves down layers → headers added
+* Receiver removes headers → decapsulation
+
+---
+
+## ✅ Why TCP is Reliable
+
+* Sequence numbers
+* ACK (acknowledgement)
+* Checksum
+* Retransmission
+
+---
+
+## 🧾 TCP Headers
+
+| Field                  | Purpose            |
+| ---------------------- | ------------------ |
+| Source Port            | sender port        |
+| Destination Port       | service port       |
+| Source IP              | sender address     |
+| Destination IP         | receiver address   |
+| Sequence Number        | order tracking     |
+| Acknowledgement Number | confirms data      |
+| Checksum               | integrity          |
+| Flags                  | SYN, ACK, FIN, RST |
+| Data                   | payload            |
+
+---
+
+## 🤝 Three-Way Handshake
+
+| Step | Action  |
+| ---- | ------- |
+| 1    | SYN     |
+| 2    | SYN-ACK |
+| 3    | ACK     |
+
+➡ Connection established
+
+---
+
+## 🔄 Data Flow
+
+* send → ACK → resend if missing
+
+---
+
+## ❌ Connection Close
+
+| Step | Action |
+| ---- | ------ |
+| 1    | FIN    |
+| 2    | ACK    |
+| 3    | FIN    |
+| 4    | ACK    |
+
+Flow:
+`SYN → SYN-ACK → ACK → DATA → FIN → ACK`
+
+---
+
+# 🚀 UDP (User Datagram Protocol)
+
+## 📌 Core Characteristics
+
+| Feature     | Description    |
+| ----------- | -------------- |
+| Type        | Connectionless |
+| Reliability | None           |
+| Speed       | Very fast      |
+
+---
+
+## ⚙️ Behavior
+
+* Stateless
+* No ACK
+* No retry
+
+---
+
+## 🎯 Use Cases
+
+* Video streaming
+* Voice calls
+* Online gaming
+* Live broadcast
+
+---
+
+## ⚡ Advantages
+
+* Fast
+* Low overhead
+* Works on unstable networks
+
+---
+
+## ⚠️ Disadvantages
+
+* No guarantee
+* No order
+* No recovery
+
+---
+
+## 🧾 UDP Headers
+
+| Field            | Purpose  |
+| ---------------- | -------- |
+| Source IP        | sender   |
+| Destination IP   | receiver |
+| Source Port      | random   |
+| Destination Port | fixed    |
+| TTL              | lifetime |
+| Data             | payload  |
+
+---
+
+## 🔄 UDP Flow
+
+* send → maybe received → no response
+
+---
+
+## 🧠 Memory Hook
+
+* **TCP:** Connect → Check → Deliver → Confirm
+* **UDP:** Send → Hope → Done
+
+---
+
+# 🔢 PORT 101
+
+| Range   | Meaning      |
+| ------- | ------------ |
+| 0–1024  | common ports |
+| 0–65535 | total ports  |
+
+Reference: [https://www.vmaxx.net/techinfo/ports.htm](https://www.vmaxx.net/techinfo/ports.htm)
+
+---
+
+# 🔀 Port Forwarding
+
+* connects internal services to internet
+* required for web servers
+* configured on router
+
+---
+
+# 🔥 Firewall
+
+A firewall controls incoming and outgoing traffic using packet inspection.
+
+| Type      | Behavior                    |
+| --------- | --------------------------- |
+| Stateful  | analyzes full connection    |
+| Stateless | analyzes individual packets |
+
+---
+
+# 🔐 VPN (Virtual Private Network)
+
+* creates secure tunnel over internet
+* connects different networks
+* provides privacy
+
+---
+
+## 🛠️ VPN Technologies
+
+| Technology | Function                             |
+| ---------- | ------------------------------------ |
+| PPP        | authentication + encryption          |
+| PPTP       | allows PPP to travel outside network |
+| IPSec      | encrypts using IP framework          |
+
+---
+
