@@ -43,8 +43,10 @@
 👉 Hides permission errors  
 
 Example:
-```bash
+bash
 find / -name "*.txt" 2>/dev/null
+
+
 
 ⚔️ find vs grep
 find → File name search
