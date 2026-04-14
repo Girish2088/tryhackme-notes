@@ -1,94 +1,203 @@
 
 
-###  Text Editors
-- `nano filename`
-  - Simple terminal-based text editor 
 
-- `vim filename`
-  - Advanced text editor with more control and features
+## ✍️ Text Editors
+
+* `nano filename`
+
+  * Simple, beginner-friendly terminal editor
+
+* `vim filename`
+
+  * Advanced editor with powerful features (steeper learning curve)
 
 ---
 
-###  File Downloading
+## 📥 File Downloading & Transfer
 
-wget-
-	to download file form web
-	syntax- wget_URL
-	ex- For example, if I wanted to download a file named "myfile.txt" onto my machine, assuming I knew the web address it -- it would 	look something like this:
-			wget https://assets.tryhackme.com/additional/linux-fundamentals/part3/myfile.txt
+### 🌐 `wget` (Download from Web)
 
-scp(secure copy)-
-		Copy files & directories from your current system to a remote system.
-		Copy files & directories from a remote system to your current system.
+Used to download files from a **web server (HTTP/HTTPS/FTP)**.
 
-	Transfering file from
-		a.my pc to remote pc
-			syntax- scp myfilename.txt username@ipaddress:home/username/newfilename.txt
-				ex-scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
-		b. remote pc to my pc
-			syntax- scp username@ipaddress:home/username/hisfilename.txt newmyfile.txt
-				ex-scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt
+**Syntax:**
 
+```bash
+wget <URL>
+```
 
-convert remort server in to server:-
-		1.login using ssh in remote pc
-		2.command is[ python3 -m  http.server ]
-		3.from new terminal use wget to download files from remote pc
+**Example:**
 
+```bash
+wget https://assets.tryhackme.com/additional/linux-fundamentals/part3/myfile.txt
+```
 
+✅ Key Points:
 
-**Process**
+* Works with URLs only
+* Does NOT use `username@ip`
+* Used for downloading from websites, not PCs directly
 
-ps- to see process goin in pc.
+---
 
-ps id - to see specific process
+### 🔐 `scp` (Secure Copy over SSH)
 
-ps aux - to see process run by different users.
+Used to transfer files between **local machine ↔ remote machine**.
 
-top- to see detailed processes view.
+📌 Rule:
+**Command runs from the machine you are currently using**
 
-kill - to kill all process
+---
 
-	to kill specific PID(process id)-syntax(kill ----)
-	
-TO KILL THE PROCESS EFFICIENTLY-
+#### 📤 Local → Remote
 
-	Below are some of the signals that we can send to a process when it is killed:
+```bash
+scp localfile.txt username@remoteIP:/path/on/remote/
+```
 
+**Example:**
 
+```bash
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+```
 
-SIGTERM - Kill the process, but allow it to do some cleanup tasks beforehand
+---
 
-SIGKILL - Kill the process - doesn't do any cleanup after the fact
+#### 📥 Remote → Local
 
-SIGSTOP - Stop/suspend a process
+```bash
+scp username@remoteIP:/path/on/remote/file.txt localfile.txt
+```
 
+**Example:**
 
+```bash
+scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt
+```
 
-systemct1-allows us to interact with the systemd process/daemon.
+---
 
+### 🧠 Mental Model
 
-	syntax:- systemctl [option] [service]
-	
-	-We can do five options with systemctl:
+* Left = **source**
+* Right = **destination**
 
-	Start
-	Stop
-	Enable
-	Disable
-	Status
-	
-		ex- systemctl start apache2
+---
 
-ctrl+z = to stop thr running process
-	- also to shift process in background.
+## 🌐 Temporary File Sharing (Python HTTP Server)
 
-fg - to run background process in to foreground.
+Convert a remote machine into a **simple web server**.
 
+### Steps:
 
+1. SSH into remote machine:
 
-apt = package manager
-repo = software ka source
-GPG key = security check
+```bash
+ssh username@remoteIP
+```
 
+2. Start server:
+
+```bash
+python3 -m http.server 8000
+```
+
+3. From your local machine:
+
+```bash
+wget http://remoteIP:8000/filename
+```
+
+---
+
+### ⚠️ Notes:
+
+* Serves files from **current directory**
+* No authentication (not secure)
+* Port `8000` must be open
+* Useful for quick file sharing
+
+---
+
+## ⚙️ Process Management
+
+### 🔍 View Processes
+
+* `ps` → show current processes
+* `ps aux` → detailed list of all processes
+* `ps <PID>` → info about specific process
+* `top` → real-time process monitoring
+
+---
+
+### ❌ Kill Processes
+
+```bash
+kill <PID>
+```
+
+⚠️ Your note said “kill all process” — wrong.
+That would be system suicide.
+
+---
+
+### 🔥 Signals
+
+* `SIGTERM` → graceful stop (default)
+* `SIGKILL` → force kill (no cleanup)
+* `SIGSTOP` → pause process
+
+Example:
+
+```bash
+kill -9 <PID>   # SIGKILL
+```
+
+---
+
+## 🧩 Service Management (`systemctl`)
+
+Used to manage services via `systemd`.
+
+**Syntax:**
+
+```bash
+systemctl <option> <service>
+```
+
+### Common Commands:
+
+* `start` → start service
+* `stop` → stop service
+* `enable` → start at boot
+* `disable` → disable at boot
+* `status` → check status
+
+**Example:**
+
+```bash
+systemctl start apache2
+```
+
+---
+
+## 🧠 Job Control
+
+* `Ctrl + Z` → pause process (send to background)
+* `fg` → bring process to foreground
+
+---
+
+## 📦 Package Management
+
+* `apt` → package manager (install/remove software)
+* `repo` → source of software packages
+* `GPG key` → verifies package authenticity
+
+---
+
+## ⚡ Key Takeaways (so you stop mixing tools again)
+
+* `scp` → machine-to-machine (uses SSH, needs username@ip)
+* `wget` → download from web (uses URL only)
+* `python3 -m http.server` → turns PC into temporary web server
 
