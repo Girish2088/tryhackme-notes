@@ -47,7 +47,7 @@ bash
 find / -name "*.txt" 2>/dev/null
 
 
-
+```
 ⚔️ find vs grep
 find → File name search
 find / -name "*tiger*" 2>/dev/null
