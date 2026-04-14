@@ -1,33 +1,58 @@
- Room Name: Linux Fundamentals Part 1
+# Linux Fundamentals Part 1 (Short Notes)
 
-Navigation Commands
-- `pwd`  
-  Displays the current working directory.
+## 📂 Navigation
+- `pwd` → Show current directory  
+- `ls` → List files/folders  
+- `cd <dir>` → Change directory  
 
-- `ls`  
-  Lists files and directories in the current location.
+---
 
-- `cd <directory>`  
-  Changes the current directory.
+## 📄 File Handling
+- `cat <file>` → View file content  
 
+---
 
-File Handling
-- `cat <filename>`    
-  Displays the contents of a file.
+## 🔍 File Search (find)
+- Used to search **files by name**
 
- File Searching
-- `find`  
-  Used to search for files in directories.
+Examples:
+- `find -name file.txt` → Exact name  
+- `find -name "*.txt"` → All .txt files  
 
-  Examples:
-  - `find -name filename` → Search by exact name  
-  - `find -name *.txt` → Search files by extension  
+### 📌 Scope
+- `find .` → Search current directory  
+- `find /` → Search entire system  
 
- Text Searching
-- `grep`  
-  Searches for specific text inside files.
+---
 
-  Examples:
-  - `grep "text" filename` → Search inside a file  
-  - `grep -R "text" .` → Search recursively in a directory  
+## 🔎 Text Search (grep)
+- Used to search **inside files**
 
+Examples:
+- `grep "text" file.txt` → Search in file  
+- `grep -R "text" .` → Search in directory  
+
+---
+
+## ⚡ Error Handling (Important)
+
+### `2>/dev/null`
+
+- `2` → Error output (stderr)  
+- `>` → Redirect  
+- `/dev/null` → Discard output  
+
+👉 Used to **hide permission errors**
+
+Example:
+- `find / -name "*.txt" 2>/dev/null`
+
+---
+
+## ⚔️ find vs grep
+
+### `find`
+- Searches **file names**
+- Use when you don’t know file location  
+
+Example:
