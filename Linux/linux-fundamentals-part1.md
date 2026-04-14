@@ -1,7 +1,7 @@
-# Linux Fundamentals Part 1 (Short Notes)
+# 🐧 Linux Fundamentals Part 1 (Quick Notes)
 
 ## 📂 Navigation
-- `pwd` → Show current directory  
+- `pwd` → Current directory  
 - `ls` → List files/folders  
 - `cd <dir>` → Change directory  
 
@@ -12,47 +12,42 @@
 
 ---
 
-## 🔍 File Search (find)
-- Used to search **files by name**
+## 🔍 File Search (`find`)
+- Searches **file names**
 
-Examples:
-- `find -name file.txt` → Exact name  
-- `find -name "*.txt"` → All .txt files  
+### Examples
+- `find -name "file.txt"` → Exact file  
+- `find -name "*.txt"` → All `.txt` files  
 
-### 📌 Scope
-- `find .` → Search current directory  
-- `find /` → Search entire system  
+### Scope
+- `find .` → Current directory  
+- `find /` → Entire system  
 
 ---
 
-## 🔎 Text Search (grep)
-- Used to search **inside files**
+## 🔎 Text Search (`grep`)
+- Searches **inside files**
 
-Examples:
+### Examples
 - `grep "text" file.txt` → Search in file  
 - `grep -R "text" .` → Search in directory  
 
 ---
 
-## ⚡ Error Handling (Important)
-
+## ⚡ Error Handling
 ### `2>/dev/null`
-
-- `2` → Error output (stderr)  
+- `2` → Error output  
 - `>` → Redirect  
 - `/dev/null` → Discard output  
 
-👉 Used to **hide permission errors**
+👉 Hides permission errors  
 
 Example:
-- `find / -name "*.txt" 2>/dev/null`
+```bash
+find / -name "*.txt" 2>/dev/null
 
----
-
-## ⚔️ find vs grep
-
-### `find`
-- Searches **file names**
-- Use when you don’t know file location  
-
-Example:
+⚔️ find vs grep
+find → File name search
+find / -name "*tiger*" 2>/dev/null
+grep → Content search
+grep -R "tiger" /var/log 2>/dev/null
