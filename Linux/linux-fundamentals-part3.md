@@ -74,7 +74,8 @@ scp username@remoteIP:/path/on/remote/file.txt localfile.txt
 scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt
 ```
 
-```to get path of the file
+**To find path of the File**
+```
   in Windows/Poweshell: Resolve-path example.txt
   in cmd: realpath example.txt
 ```
