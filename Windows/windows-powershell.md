@@ -29,7 +29,11 @@
 
 # Filtering
 - `Where-Object`
-- Get-ChildItem | Where-Object Length -gt 100
+- `-gt  = greater than`
+- `lt  = less than`
+- `eq  = equals`
+- `like = pattern match`
+-  Get-ChildItem | Where-Object Length -gt 100
 
 # Searching Text
 - `Select-String`
