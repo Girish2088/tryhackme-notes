@@ -30,9 +30,9 @@
 # Filtering
 - `Where-Object`
 - `-gt  = greater than`
-- `lt  = less than`
-- `eq  = equals`
-- `like = pattern match`
+- `-lt  = less than`
+- `-eq  = equals`
+- `-like = pattern match`
 -  Get-ChildItem | Where-Object Length -gt 100
 
 # Searching Text
