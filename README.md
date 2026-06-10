@@ -6,7 +6,7 @@ This repository documents my cybersecurity learning using TryHackMe.
 
 ###  Networking
 - [Networking Fundamentals](Networking/networking-fundamentals.md)
-- [Networking Essentials](Networking-Essentials.md)
+- [Networking Essentials](Networking/Networking-Essentials.md)
   
 
 ###  Linux
