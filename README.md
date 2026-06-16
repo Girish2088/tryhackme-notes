@@ -6,7 +6,7 @@ This repository documents my cybersecurity learning using TryHackMe.
 
 ###  Networking
 - [OSI-TCP-UDP](Networking/OSI-TCP-UDP.md)
-- [Networking Concepts](Networking/Networking-Concepts.md)
+- [Networking-basic](Networking/Networking-basic.md)
   
 
 ###  Linux
