@@ -5,7 +5,7 @@ This repository documents my cybersecurity learning using TryHackMe.
 ## 📚 Completed Rooms
 
 ###  Networking
-- [Networking Fundamentals](Networking/networking-fundamentals.md)
+- [OSI-TCP-UDP](Networking/OSI-TCP-UDP.md)
 - [Networking Essentials](Networking/Networking-Essentials.md)
 - [Networking Concepts](Networking/Networking-Concepts.md)
   
