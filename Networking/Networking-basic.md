@@ -139,29 +139,31 @@ Google Router
 Traceroute = GPS of a Packet
 ```
 Example:
-
+```
 traceroute google.com
+```
 Windows
+```
 tracert <destination>
-
+```
 Example:
-
+```
 tracert google.com
-
+```
 Common Options (Linux)
 
 Disable DNS resolution:
-
+```
 traceroute -n google.com
-
+```
 Limit the maximum number of hops:
-
+```
 traceroute -m 10 google.com
-
+```
 Use ICMP packets:
-
+```
 traceroute -I google.com
-
+```
 ---
 
 ## Routing = Choose Path
