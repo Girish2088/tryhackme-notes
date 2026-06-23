@@ -164,6 +164,13 @@ Use ICMP packets:
 ```
 traceroute -I google.com
 ```
+| Command                          | Purpose                                 |
+| -------------------------------- | --------------------------------------- |
+| `traceroute -n google.com`       | Show only IP addresses (no DNS lookup). |
+| `traceroute -I google.com`       | Use ICMP packets.                       |
+| `traceroute -m 10 google.com`    | Limit maximum hops to 10.               |
+| `traceroute -T -p 80 google.com` | Use TCP packets on port 80.             |
+
 ---
 
 ## Routing = Choose Path
