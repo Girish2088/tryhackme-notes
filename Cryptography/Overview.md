@@ -1,30 +1,33 @@
-Confidentiality
+Cryptography Fundamentals
 │
-├── Symmetric Encryption
-│      └── AES
+├── Confidentiality (Keep Data Secret)
+│   │
+│   ├── Symmetric Encryption
+│   │   └── AES
+│   │
+│   └── Asymmetric Encryption
+│       ├── RSA
+│       └── ECC
 │
-└── Asymmetric Encryption
-       └── RSA / ECC
-
-Integrity
+├── Integrity (Detect Modification)
+│   │
+│   ├── Hash Functions
+│   │   ├── SHA-256
+│   │   └── SHA-512
+│   │
+│   └── HMAC
 │
-├── Hashing
-│      ├── SHA256
-│      └── SHA512
+├── Authentication (Verify Identity)
+│   │
+│   ├── Passwords
+│   ├── SSH Keys
+│   └── Certificates
 │
-└── HMAC
-
-Authentication
+├── Authenticity (Prove Sender Is Genuine)
+│   │
+│   ├── Digital Signatures
+│   └── Certificates
 │
-├── Passwords
-├── SSH Keys
-└── Certificates
-
-Authenticity
-│
-├── Digital Signatures
-└── Certificates
-
-Trust
-│
-└── Certificate Authorities (CA)
+└── Trust (Who Verifies Everyone?)
+    │
+    └── Certificate Authorities (CA)
