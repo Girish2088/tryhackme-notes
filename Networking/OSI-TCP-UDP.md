@@ -77,6 +77,7 @@ The OSI model provides a framework dictating how all networked devices send, rec
 ### 6. Presentation
 
 * encryption (example: HTTPS)
+* Security feature such as data encryption (Like HTTPS when visiting a secure site) occur at this layer.
 
 ---
 
