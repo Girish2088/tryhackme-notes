@@ -5,7 +5,7 @@ This repository documents my cybersecurity learning using TryHackMe.
 ## 📚 Completed Rooms
 
 ###  Networking
-- [OSI-Model](Networking/OSI Model.md)
+- [OSI-Model](Networking/OSI-Model.md.md)
 - [Networking-basic](Networking/Networking-basic.md)
 - [Networking-protocols](Networking/Networking-protocols.md)
 - [Secure-Networking](Networking/Secure-Networking.md)
