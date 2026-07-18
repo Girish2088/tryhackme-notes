@@ -85,6 +85,8 @@ The OSI model provides a framework dictating how all networked devices send, rec
 
 * user interaction via GUI
 * defines how data is accessed
+* the layer in which protocols and rules are in place to determine how the user should interact with data sent or received.
+* provide a friendly , Graphical User Interface (GUI) for users to interact with data sent or received.
 
 ---
 
