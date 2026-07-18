@@ -89,15 +89,41 @@ The OSI model provides a framework dictating how all networked devices send, rec
 
 # 📦 Packets vs Frames
 
-| Term   | Meaning                           |
-| ------ | --------------------------------- |
-| Packet | contains IP address               |
-| Frame  | encapsulated structure without IP |
+| **Term**   | **Meaning**                                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------------------------- |
+| **Packet** | Layer 3 (Network Layer) data. Contains Source IP and Destination IP.                                       |
+| **Frame**  | Layer 2 (Data Link Layer) data. Contains Source MAC and Destination MAC, and carries the Packet inside it. |
 
-📌 Analogy:
+---
 
-* Envelope = Frame
-* Letter = Packet
+## 📌 Analogy
+
+* **Letter = Packet** (contains the destination IP information)
+* **Envelope = Frame** (contains the MAC addresses and carries the packet)
+
+---
+
+## 🚀 Communication Flow
+
+```text
+Application Data
+        ↓
+Packet (Layer 3 - IP Address)
+        ↓
+Frame (Layer 2 - MAC Address + Packet)
+        ↓
+Sent through NIC
+```
+
+---
+* **Packet belongs to Layer 3 (Network Layer).**
+* **Frame belongs to Layer 2 (Data Link Layer).**
+* **Packet contains IP addresses.**
+* **Frame contains MAC addresses and carries the Packet.**
+* **Packet travels from the source device to the final destination.**
+* **Frame travels only to the next hop (Router/Gateway).**
+* **At every router, the old Frame is removed and a new Frame is created with new Source and Destination MAC addresses.**
+* **IP addresses usually remain the same during the journey, but MAC addresses change at every hop.**
 
 ---
 
