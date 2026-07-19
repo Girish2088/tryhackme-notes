@@ -90,6 +90,6 @@ Checksum
 Example:
 
 ```text
-Source Port: 53514
-Destination Port: 53 (DNS)
+Source Port: 40941
+Destination Port: 443 (DNS)
 ```
