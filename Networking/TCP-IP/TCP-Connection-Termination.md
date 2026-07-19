@@ -4,7 +4,7 @@
 
 TCP Connection Termination is the process of gracefully closing a TCP connection after data transfer is complete.
 
-It is commonly called the Four-Way Handshake.
+It is commonly called the **Four-Way Handshake**.
 
 ---
 
@@ -19,25 +19,19 @@ It is commonly called the Four-Way Handshake.
 
 ---
 
-# Communication Flow
+# Theoretical Communication Flow
 
 ```text
-Client
-   │
-   │ FIN
-   ▼
-Server
-   │
-   │ ACK
-   ▼
-Client
-   │
-   │ FIN
-   ▼
-Server
-   │
-   │ ACK
-   ▼
+Client                          Server
+  │                               │
+  │ -------- FIN ------------->   │
+  │                               │
+  │ <------- ACK -------------    │
+  │                               │
+  │ <------- FIN -------------    │
+  │                               │
+  │ -------- ACK ------------->   │
+  │                               │
 Connection Closed
 ```
 
@@ -46,18 +40,17 @@ Connection Closed
 # Why Four Packets?
 
 - TCP is a full-duplex protocol.
-- Both client and server close their side of the connection independently.
-- Each FIN must be acknowledged.
+- Client and Server close their side of the connection independently.
+- Every FIN must be acknowledged with an ACK.
 
 ---
 
 # What I Learned
 
-- TCP uses a Four-Way Handshake to close a connection.
-- Connection termination starts with a FIN packet.
-- Every FIN is acknowledged with an ACK.
-- Both client and server close their communication independently.
-- A TCP connection is fully closed only after the final ACK.
+- TCP uses a Four-Way Handshake to terminate a connection.
+- The connection is closed gracefully after data transfer is complete.
+- Both client and server independently close their side of the connection.
+- Every FIN is acknowledged with an ACK before the connection is fully closed.
 
 ---
 
@@ -71,11 +64,41 @@ Display Filter:
 tcp.flags.fin == 1
 ```
 
-Observe packets such as:
+In real packet captures, you'll usually see:
 
 ```text
 Client → Server : FIN, ACK
 Server → Client : ACK
 Server → Client : FIN, ACK
 Client → Server : ACK
+```
+
+---
+
+# Note
+
+The theoretical Four-Way Handshake is:
+
+```text
+FIN
+↓
+ACK
+↓
+FIN
+↓
+ACK
+```
+
+However, in real TCP implementations, the **FIN** and **ACK** flags are often combined into a single packet (`FIN, ACK`) to reduce overhead.
+
+So, in Wireshark, you'll commonly observe:
+
+```text
+FIN, ACK
+↓
+ACK
+↓
+FIN, ACK
+↓
+ACK
 ```
