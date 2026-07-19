@@ -87,6 +87,20 @@ Length
 Checksum
 ```
 
+# UDP Common Ports
+
+Different applications use different UDP Port Numbers.
+
+| Port | Service |
+|------|---------|
+| 53 | DNS |
+| 67 | DHCP Server |
+| 68 | DHCP Client |
+| 69 | TFTP |
+| 123 | NTP |
+| 161 | SNMP |
+
+
 Example:
 
 ```text
