@@ -4,101 +4,75 @@
 
 TCP Connection Termination is the process of gracefully closing a TCP connection after data transfer is complete.
 
-It is commonly called the **Four-Way Handshake**.
+It is commonly known as the **Four-Way Handshake**.
 
 ---
 
-# Steps
+## Why is it Needed?
 
-| Step | Packet | Purpose |
-|------|--------|---------|
-| 1 | FIN | Client requests to close the connection |
-| 2 | ACK | Server acknowledges the request |
-| 3 | FIN | Server requests to close its side |
-| 4 | ACK | Client acknowledges the request |
+Once the client and server finish exchanging data, both sides must properly close the connection.
+
+Since TCP is **full-duplex**, each side closes its own half of the connection independently.
 
 ---
 
-# Theoretical Communication Flow
+## Conceptual Process
+
+TCP connection termination is commonly explained as:
 
 ```text
-Client                          Server
-  │                               │
-  │ -------- FIN ------------->   │
-  │                               │
-  │ <------- ACK -------------    │
-  │                               │
-  │ <------- FIN -------------    │
-  │                               │
-  │ -------- ACK ------------->   │
-  │                               │
-Connection Closed
+Client → Server : FIN
+Server → Client : ACK
+Server → Client : FIN
+Client → Server : ACK
 ```
 
----
-
-# Why Four Packets?
-
-- TCP is a full-duplex protocol.
-- Client and Server close their side of the connection independently.
-- Every FIN must be acknowledged with an ACK.
+This is known as the **Four-Way Handshake** because each side independently closes its half of the connection.
 
 ---
 
-# What I Learned
+## Practical Wireshark Capture
 
-- TCP uses a Four-Way Handshake to terminate a connection.
-- The connection is closed gracefully after data transfer is complete.
-- Both client and server independently close their side of the connection.
-- Every FIN is acknowledged with an ACK before the connection is fully closed.
+In real network captures, the ACK and FIN are often combined into a single packet when the receiving host is ready to close its connection immediately.
+
+A common capture looks like:
+
+```text
+Client → Server : FIN, ACK
+Server → Client : FIN, ACK
+Client → Server : ACK
+```
+
+Although you may see only **three packets**, the TCP protocol still follows the same connection termination process. The server combines the ACK for the client's FIN with its own FIN into a single **FIN, ACK** packet.
 
 ---
 
-# Wireshark
+## What I Learned
+
+- TCP closes a connection gracefully after data transfer is complete.
+- Connection termination is commonly explained as a Four-Way Handshake.
+- Each side closes its own half of the connection independently.
+- In real packet captures, **FIN** and **ACK** are often combined into a single **FIN, ACK** packet.
+- Wireshark may show three packets instead of four due to this optimization.
+
+---
+
+## Wireshark
 
 ✅ Can be seen in Wireshark.
 
-Display Filter:
+**Display Filter:**
 
 ```text
 tcp.flags.fin == 1
 ```
 
-In real packet captures, you'll usually see:
+Observe the TCP packets containing the **FIN** flag.
+
+Common capture:
 
 ```text
 Client → Server : FIN, ACK
-Server → Client : ACK
 Server → Client : FIN, ACK
 Client → Server : ACK
-```
-
----
-
-# Note
-
-The theoretical Four-Way Handshake is:
-
-```text
-FIN
-↓
-ACK
-↓
-FIN
-↓
-ACK
-```
-
-However, in real TCP implementations, the **FIN** and **ACK** flags are often combined into a single packet (`FIN, ACK`) to reduce overhead.
-
-So, in Wireshark, you'll commonly observe:
-
-```text
-FIN, ACK
-↓
-ACK
-↓
-FIN, ACK
-↓
-ACK
 ```
