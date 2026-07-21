@@ -1,15 +1,4 @@
-# 🛡️ TryHackMe Learning Journey
-
-This repository documents my cybersecurity learning using TryHackMe.
-
-## 📚 Completed Rooms
-
-###  Networking
-- [OSI-Model](Networking/OSI-Model.md)
-- [Networking-basic](Networking/Networking-basic.md)
-- [Networking-protocols](Networking/Networking-protocols.md)
-- [Secure-Networking](Networking/Secure-Networking.md)
-  
+# 🛡️ TryHackMe Learnings
 
 ###  Linux
 - [Linux Fundamentals Part 1](Linux/linux-fundamentals-part1.md)
@@ -21,7 +10,4 @@ This repository documents my cybersecurity learning using TryHackMe.
 - [Windows Powershell](Windows/windows-powershell.md)
 
 
-## 🎯 Goal
-- Build strong cybersecurity fundamentals
-- Practice hands-on labs
-- Document learning clearly
+
